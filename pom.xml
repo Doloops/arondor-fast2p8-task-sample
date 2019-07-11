@@ -26,7 +26,18 @@
 	      <artifactId>arondor-fast2p8-xml-xstream</artifactId>
 	      <version>${fast2p8.version}</version>
 	    </dependency>
-
+	    <dependency>
+	      <groupId>com.arondor.fast2p8</groupId>
+	      <artifactId>arondor-fast2p8-std-task</artifactId>
+	      <version>${fast2p8.version}</version>
+	      <scope>test</scope>
+	    </dependency>
+	    <dependency>
+	      <groupId>com.arondor.fast2p8</groupId>
+	      <artifactId>arondor-fast2p8-punnetlist</artifactId>
+	      <version>${fast2p8.version}</version>
+	      <scope>test</scope>
+	    </dependency>
 	    <dependency>
 	      <groupId>org.apache.commons</groupId>
 	      <artifactId>commons-io</artifactId>
