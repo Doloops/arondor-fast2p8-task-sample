@@ -1,5 +1,6 @@
 package com.arondor.fast2p8.samples.task;
 
+import com.arondor.fast2p8.model.punnet.ContentContainer;
 import com.arondor.fast2p8.model.punnet.Document;
 import com.arondor.fast2p8.model.punnet.Folder;
 import com.arondor.fast2p8.model.punnet.Punnet;
@@ -20,6 +21,7 @@ public class SamplePropertiesMapper extends BasicTask
             /*
              * Get existing values from the document
              */
+            String docId = doc.getDataSet().getDataValue("DocumentId");
             String sponsor = doc.getDataSet().getDataValue("Sponsor");
             String study = doc.getDataSet().getDataValue("Study");
             String studyCountry = doc.getDataSet().getDataValue("Study_Country");
@@ -36,6 +38,13 @@ public class SamplePropertiesMapper extends BasicTask
              */
             Folder newFolder = doc.getFolderReferenceSet().addFolderReference();
             newFolder.setPath("/" + sponsor + "/" + study + "/" + studyCountry + "/" + studySite);
+
+            /*
+             * Create a contentContainer with property URL equals to documentId
+             */
+            ContentContainer container = getManager().getPunnetContentFactory().createContent(doc, docId);
+            doc.getContentSet().addContent(container);
+
         }
         return true;
     }

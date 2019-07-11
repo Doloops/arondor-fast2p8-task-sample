@@ -1,5 +1,6 @@
 package com.arondor.fast2p8.samples.task;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import com.arondor.common.io.scan.DirectoryScanner;
 import com.arondor.fast2p8.model.dummy.DummyManager;
 import com.arondor.fast2p8.model.factory.PunnetFactory;
 import com.arondor.fast2p8.model.manager.Manager;
+import com.arondor.fast2p8.model.punnet.ContentContainer;
 import com.arondor.fast2p8.model.punnet.Document;
 import com.arondor.fast2p8.model.punnet.Punnet;
 import com.arondor.fast2p8.model.punnet.id.DocumentIdFactory;
@@ -63,7 +65,7 @@ public class TestSamplePropertiesMapper
     }
 
     @Test
-    public void test_fromCsv_mapProperties_createFolderPath() throws TaskException
+    public void test_fromCsv_mapProperties_createFolderPath() throws TaskException, IOException
     {
         CSVPunnetList csvPunnetList = new CSVPunnetList();
         csvPunnetList.setManager(manager);
@@ -85,6 +87,9 @@ public class TestSamplePropertiesMapper
         samplePropertiesMapperTask.runTask(punnet);
 
         Assert.assertEquals(1, punnet.getDocumentList().size());
+        ContentContainer content = punnet.getDocumentList().get(0).getContentSet().getContent().get(0);
+        String url = manager.getPunnetContentFactory().getContentAsUrl(content);
+        Assert.assertEquals("DocumentId1", url);
         Assert.assertEquals("Curie",
                 punnet.getDocumentList().get(0).getDataSet().getDataValue("someaspect:SponsorName"));
         Assert.assertEquals("Site01",
