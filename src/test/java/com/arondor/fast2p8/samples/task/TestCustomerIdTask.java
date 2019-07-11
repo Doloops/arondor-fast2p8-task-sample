@@ -1,5 +1,6 @@
 package com.arondor.fast2p8.samples.task;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,8 +12,6 @@ import com.arondor.fast2p8.model.punnet.Punnet;
 import com.arondor.fast2p8.model.punnet.id.DocumentIdFactory;
 import com.arondor.fast2p8.model.task.TaskException;
 import com.arondor.fast2p8.xstream.factory.XStreamPunnetFactory;
-
-import junit.framework.Assert;
 
 public class TestCustomerIdTask
 {
